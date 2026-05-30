@@ -480,7 +480,7 @@ class Message:
 
         return Message(
             id=body["message"]["messageId"],
-            attributes=body["message"]["attributes"],
+            attributes=body["message"].get("attributes", {}),
             subscription=body["subscription"],
             data=parser(base64.b64decode(body["message"]["data"]).decode("utf-8")),
         )
